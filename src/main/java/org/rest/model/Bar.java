@@ -1,7 +1,5 @@
 package org.rest.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,12 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- * @author eugenp
- */
+import org.rest.common.IEntity;
+
 @Entity
 @XmlRootElement
-public class Bar implements Serializable{
+public class Bar implements IEntity{
 	
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -34,9 +31,11 @@ public class Bar implements Serializable{
 	
 	// API
 	
+	@Override
 	public Long getId(){
 		return this.id;
 	}
+	@Override
 	public void setId( final Long idToSet ){
 		this.id = idToSet;
 	}
@@ -79,4 +78,5 @@ public class Bar implements Serializable{
 	public String toString(){
 		return "Foo [name=" + this.name + "]";
 	}
+	
 }
